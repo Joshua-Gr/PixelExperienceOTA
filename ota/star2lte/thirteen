@@ -1,0 +1,23 @@
+{
+  "datetime": ,
+  "filename": "",
+  "id": "",
+  "size": ,
+  "url": "",
+  "version": "thirteen",
+  "filehash": "",
+  "maintainers": [
+    {
+      "name": "Josh Greenman",
+      "github_username": "Joshua-Gr",
+      "versions": [
+        "thirteen",
+        "thirteen_plus"
+      ]
+    }
+  ],
+  "error": false,
+  "donate_url": "https://github.com/Joshua-Gr",
+  "website_url": "https://github.com/Joshua-Gr/PixelExperienceOTA",
+  "news_url": "https://github.com/Joshua-Gr/PixelExperienceOTA"
+}
