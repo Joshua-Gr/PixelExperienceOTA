@@ -1,11 +1,11 @@
 {
-  "datetime": ,
-  "filename": "",
-  "id": "",
-  "size": ,
-  "url": "",
+  "datetime": 1677816005,
+  "filename": "PixelExperience_Plus_star2lte-13.0-20230303-0303-OFFICIAL.zip",
+  "id": "9cb3f2ffeb2ff287013e429094049042",
+  "size": 1616904155,
+  "url": "https://github.com/Joshua-Gr/PixelExperienceOTA/blob/main/ota/star2lte/PixelExperience_Plus_star2lte-13.0-20230303-0303-OFFICIAL.zip",
   "version": "thirteen",
-  "filehash": "",
+  "filehash": "9cb3f2ffeb2ff287013e429094049042",
   "maintainers": [
     {
       "name": "Josh Greenman",
