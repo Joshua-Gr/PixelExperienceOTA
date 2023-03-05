@@ -1,11 +1,11 @@
 {
   "datetime": 1678001298,
-  "filename": "incremental_ota_update.zip",
-  "id": "2f712283e381f963a4f2c0d5de9d7823",
-  "size": 9129717,
-  "url": "https://raw.githubusercontent.com/Joshua-Gr/PixelExperienceOTA/main/ota/star2lte/incremental_ota_update.zip",
+  "filename": "aosp_star2lte-ota-eng.josh.zip",
+  "id": "9d81b81616a477c6507fe3dbf70054f8",
+  "size": 1616904790,
+  "url": "https://pixelexperienceota.s3.eu-de.cloud-object-storage.appdomain.cloud/aosp_star2lte-ota-eng.josh.zip",
   "version": "thirteen_plus",
-  "filehash": "2f712283e381f963a4f2c0d5de9d7823",
+  "filehash": "9d81b81616a477c6507fe3dbf70054f8",
   "maintainers": [
     {
       "name": "Josh Greenman",
