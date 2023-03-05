@@ -1,11 +1,11 @@
 {
   "datetime": 1677971694,
   "filename": "incremental_ota_update.zip",
-  "id": "c3475763ae63d6645dd6c886387b74be",
-  "size": 9142666,
+  "id": "ab21037c2d6dfca9c9734c736651fea2",
+  "size": 8368800,
   "url": "https://raw.githubusercontent.com/Joshua-Gr/PixelExperienceOTA/main/ota/star2lte/incremental_ota_update.zip",
   "version": "thirteen_plus",
-  "filehash": "c3475763ae63d6645dd6c886387b74be",
+  "filehash": "ab21037c2d6dfca9c9734c736651fea2",
   "maintainers": [
     {
       "name": "Josh Greenman",
