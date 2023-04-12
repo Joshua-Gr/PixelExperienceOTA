@@ -1,0 +1,4 @@
+export CUSTOM_BUILD_TYPE=OFFICIAL
+cat out/build_date.txt
+du -sb
+md5sum
