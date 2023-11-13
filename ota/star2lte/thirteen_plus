@@ -1,11 +1,11 @@
 {
-  "datetime": 1695101619,
-  "filename": "PixelExperience_Plus_star2lte-13.0-20230919-0535-OFFICIAL.zip",
-  "id": "0eec62a5c46367010dfa05a0f76e4e1a",
-  "size": 1646938388,
-  "url": "https://pixelexperienceota.s3.eu-de.cloud-object-storage.appdomain.cloud/PixelExperience_Plus_star2lte-13.0-20230919-0535-OFFICIAL.zip",
+  "datetime": 1699849173,
+  "filename": "PixelExperience_Plus_star2lte-13.0-20231113-0419-OFFICIAL.zip",
+  "id": "de0b13136fad4b3dddf193c48c921f16",
+  "size": 1647142601,
+  "url": "https://pixelexperienceota.s3.eu-de.cloud-object-storage.appdomain.cloud/PixelExperience_Plus_star2lte-13.0-20231113-0419-OFFICIAL.zip",
   "version": "thirteen_plus",
-  "filehash": "0eec62a5c46367010dfa05a0f76e4e1a",
+  "filehash": "de0b13136fad4b3dddf193c48c921f16",
   "maintainers": [
     {
       "name": "Josh Greenman",
