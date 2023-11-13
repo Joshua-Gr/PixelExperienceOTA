@@ -9,7 +9,7 @@
   "maintainers": [
     {
       "name": "Josh Greenman",
-      "github_username": "Joshua-Gr",
+      "ci_username": "Joshua-Gr",
       "versions": [
         "thirteen",
         "thirteen_plus"
