@@ -72,10 +72,10 @@ index c021586..2386bda 100644
    <project path="packages/apps/CarrierConfig" name="packages_apps_CarrierConfig" remote="pixel" />
    <project path="packages/apps/Nfc" name="packages_apps_Nfc" remote="pixel" />
 diff --git a/snippets/remove.xml b/snippets/remove.xml
-index df0a80e..6237344 100644
+index df0a80e..f926c5d 100644
 --- a/snippets/remove.xml
 +++ b/snippets/remove.xml
-@@ -158,12 +158,10 @@
+@@ -158,7 +158,6 @@
    <remove-project name="platform/packages/apps/Contacts" />
    <remove-project name="platform/packages/apps/DevCamera" />
    <remove-project name="platform/packages/apps/DeskClock" />
@@ -83,11 +83,6 @@ index df0a80e..6237344 100644
    <remove-project name="platform/packages/apps/Gallery" />
    <remove-project name="platform/packages/apps/Gallery2" />
    <remove-project name="platform/packages/apps/LegacyCamera" />
-   <remove-project name="platform/packages/apps/Messaging" />
--  <remove-project name="platform/packages/apps/Music" />
-   <remove-project name="platform/packages/apps/Nfc" />
-   <remove-project name="platform/packages/apps/PhoneCommon" />
-   <remove-project name="platform/packages/apps/Protips" />
 
 project packages/apps/Dialer/
 diff --git a/java/com/android/dialer/app/res/values/cm_strings.xml b/java/com/android/dialer/app/res/values/cm_strings.xml
@@ -135,7 +130,7 @@ index 7aabd6cac..2832c87bc 100644
 +    <integer name="call_recording_audio_source">4</integer>
  </resources>
 diff --git a/java/com/android/incallui/CallButtonPresenter.java b/java/com/android/incallui/CallButtonPresenter.java
-index 8fba90be7..a8882f2dd 100644
+index 8fba90be7..5128183a4 100644
 --- a/java/com/android/incallui/CallButtonPresenter.java
 +++ b/java/com/android/incallui/CallButtonPresenter.java
 @@ -22,6 +22,7 @@ import android.content.SharedPreferences;
@@ -154,20 +149,21 @@ index 8fba90be7..a8882f2dd 100644
  
    private CallRecorder.RecordingProgressListener recordingProgressListener =
        new CallRecorder.RecordingProgressListener() {
-@@ -113,6 +115,12 @@ public class CallButtonPresenter
+@@ -112,6 +114,13 @@ public class CallButtonPresenter
+ 
      CallRecorder recorder = CallRecorder.getInstance();
      recorder.addRecordingProgressListener(recordingProgressListener);
- 
++    inCallButtonUi.setCallRecordingState(recorder.isRecording());
++
 +    if(recorder.isRecording()){
 +      inCallButtonUi.setCallRecordingState(true);
 +    } else {
 +      inCallButtonUi.setCallRecordingState(false);
 +    } 
-+
+ 
      // Update the buttons state immediately for the current call
      onStateChange(InCallState.NO_CALLS, inCallPresenter.getInCallState(), CallList.getInstance());
-     isInCallButtonUiReady = true;
-@@ -142,14 +150,24 @@ public class CallButtonPresenter
+@@ -142,14 +151,24 @@ public class CallButtonPresenter
    @Override
    public void onStateChange(InCallState oldState, InCallState newState, CallList callList) {
      Trace.beginSection("CallButtonPresenter.onStateChange");
@@ -175,7 +171,7 @@ index 8fba90be7..a8882f2dd 100644
 -      call.removeListener(this);
 -    }
 +    CallRecorder recorder = CallRecorder.getInstance();
-+    boolean isEnabled = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(context.getString(R.string.auto_call_recording_key), false);
++    boolean isEnabled = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(context.getString(R.string.auto_call_recording_key), true);
 +
      if (newState == InCallState.OUTGOING) {
        call = callList.getOutgoingCall();
@@ -195,7 +191,7 @@ index 8fba90be7..a8882f2dd 100644
        // When connected to voice mail, automatically shows the dialpad.
        // (On previous releases we showed it when in-call shows up, before waiting for
        // OUTGOING.  We may want to do that once we start showing "Voice mail" label on
-@@ -165,6 +183,9 @@ public class CallButtonPresenter
+@@ -165,6 +184,9 @@ public class CallButtonPresenter
        }
        call = callList.getIncomingCall();
      } else {
@@ -205,32 +201,25 @@ index 8fba90be7..a8882f2dd 100644
        call = null;
      }
  
-@@ -297,23 +318,9 @@ public class CallButtonPresenter
-   public void callRecordClicked(boolean checked) {
-     CallRecorder recorder = CallRecorder.getInstance();
-     if (checked) {
--      final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
--      boolean warningPresented = prefs.getBoolean(KEY_RECORDING_WARNING_PRESENTED, false);
--      if (!warningPresented) {
--        new AlertDialog.Builder(getActivity())
--            .setTitle(R.string.recording_warning_title)
--            .setMessage(R.string.recording_warning_text)
--            .setPositiveButton(R.string.onscreenCallRecordText, (dialog, which) -> {
--              prefs.edit()
--                  .putBoolean(KEY_RECORDING_WARNING_PRESENTED, true)
--                  .apply();
--              startCallRecordingOrAskForPermission();
--            })
--            .setNegativeButton(android.R.string.cancel, null)
--            .show();
--      } else {
-+       if(!recorder.isRecording()) {
-         startCallRecordingOrAskForPermission();
--      }
-+       }
+@@ -307,12 +329,17 @@ public class CallButtonPresenter
+               prefs.edit()
+                   .putBoolean(KEY_RECORDING_WARNING_PRESENTED, true)
+                   .apply();
++                if (!recorder.isRecording()) {
++                  startCallRecordingOrAskForPermission();
++                }
+               startCallRecordingOrAskForPermission();
+             })
+             .setNegativeButton(android.R.string.cancel, null)
+             .show();
+       } else {
+-        startCallRecordingOrAskForPermission();
++        if (!recorder.isRecording()) {
++          startCallRecordingOrAskForPermission();
++        }
+       }
      } else {
        if (recorder.isRecording()) {
-         recorder.finishRecording();
 
 project packages/apps/Updates/
 diff --git a/app/src/main/java/org/pixelexperience/ota/misc/Constants.java b/app/src/main/java/org/pixelexperience/ota/misc/Constants.java
@@ -251,3 +240,17 @@ index 9c05054e..6d63c708 100644
 +    static final String DOWNLOAD_WEBPAGE_URL = "https://github.com/Joshua-Gr/PixelExperienceOTA/blob/main/ota/%s/%s";
      static final String EXPORT_PATH = "PixelExperience-Updates/";
  }
+
+project vendor/gms/
+diff --git a/common/common-vendor.mk b/common/common-vendor.mk
+index 328ea71..dc4a1da 100644
+--- a/common/common-vendor.mk
++++ b/common/common-vendor.mk
+@@ -58,7 +58,6 @@ PRODUCT_PACKAGES += \
+     DeviceIntelligenceNetworkPrebuilt \
+     DevicePersonalizationPrebuiltPixel2020 \
+     FilesPrebuilt \
+-    GoogleDialer \
+     GoogleOneTimeInitializer \
+     GoogleRestorePrebuilt \
+     PartnerSetupPrebuilt \
