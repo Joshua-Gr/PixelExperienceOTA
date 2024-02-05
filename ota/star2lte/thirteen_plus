@@ -1,11 +1,11 @@
 {
-  "datetime": 1706356012,
-  "filename": "PixelExperience_Plus_star2lte-13.0-20240127-1148-OFFICIAL.zip",
-  "id": "c13cd6b5ee75b4faa3c1fd2562f74f8f",
-  "size": 1447844549,
-  "url": "https://pixelexperienceota.s3.eu-de.cloud-object-storage.appdomain.cloud/PixelExperience_Plus_star2lte-13.0-20240127-1148-OFFICIAL.zip",
+  "datetime": 1707103607,
+  "filename": "PixelExperience_Plus_star2lte-13.0-20240205-0328-OFFICIAL.zip",
+  "id": "b76319688244d5ae28075d423b5547e3",
+  "size": 1473401248,
+  "url": "https://pixelexperienceota.s3.eu-de.cloud-object-storage.appdomain.cloud/PixelExperience_Plus_star2lte-13.0-20240205-0328-OFFICIAL.zip",
   "version": "thirteen_plus",
-  "filehash": "c13cd6b5ee75b4faa3c1fd2562f74f8f",
+  "filehash": "b76319688244d5ae28075d423b5547e3",
   "maintainers": [
     {
       "name": "Josh Greenman",
@@ -18,6 +18,6 @@
   ],
   "error": false,
   "donate_url": "https://github.com/Joshua-Gr",
-  "website_url": "https://github.com/Joshua-Gr/PixelExperienceOTA",
+  "website_url": "https://github.com/Joshua-Gr/pe-manifest",
   "news_url": "https://github.com/Joshua-Gr/PixelExperienceOTA"
 }
